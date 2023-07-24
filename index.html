@@ -57,37 +57,42 @@
       border: none;
     }
   </style>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 </head>
 <body>
   <div class="container">
+<div class="row">
+  <button class="menu-button">
+    <div class="black-square"></div>
+    <div class="menu-icon">
+      <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
+      ☰
+    </div>
+  </button>
+</div>
     <div class="row">
-      <button class="circle"></button>
-      <button class="circle"></button>
-      <button class="circle"></button>
-      <button class="invisible-button"></button>
-      <button class="circle"></button>
-      <button class="circle"></button>
-      <button class="circle"></button>
+      <!-- Add data-name attribute with unique names for each button -->
+            <button class="invisible-button"></button>
+      <button class="circle" data-name="Left"></button>
+      <button class="circle" data-name="Down"></button>
+      <button class="circle" data-name="Right"></button>
+
+      <button class="circle" data-name="1"></button>
+      <button class="circle" data-name="2"></button>
+      <button class="circle" data-name="3"></button>
+       <button class="circle" data-name="4"></button>
     </div>
     <div class="row">
       <button class="invisible-button"></button>
       <button class="invisible-button"></button>
       <button class="invisible-button"></button>
       <button class="invisible-button"></button>
-      <button class="circle"></button>
-      <button class="circle"></button>
-      <button class="circle"></button>
-    </div>
+      <button class="circle" data-name="5"></button>
+      <button class="circle" data-name="6"></button>
+      <button class="circle" data-name="7"></button>
+            <button class="circle" data-name="8"></button>
+         </div>
     <div class="row">
-      <button class="invisible-button"></button>
-      <button class="invisible-button"></button>
-      <button class="invisible-button"></button>
-      <button class="circle"></button>
-      <button class="invisible-button"></button>
-      <button class="invisible-button"></button>
-      <button class="invisible-button"></button>
-      <button class="invisible-button"></button>
+       <button class="circle" data-name="Up"></button>
     </div>
   </div>
 
@@ -101,6 +106,17 @@
         navigator.vibrate(50);
       }
     }
+<!-- Menu button with black square background -->
+<button class="menu-button">
+  <div class="black-square"></div>
+  <div class="menu-icon">
+    <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
+    ☰
+  </div>
+</button>
+
+<!-- Input element for file upload -->
+<input type="file" id="background-upload" accept="image/*" style="display: none;">
 
     // Attach click events to buttons for desktop devices
     const circles = document.querySelectorAll(".circle");
@@ -108,6 +124,7 @@
       circle.addEventListener("mousedown", () => {
         vibrateDevice(); // Vibrate when button is pressed
         circle.style.top = "20px"; // Move the button down by 20px
+        console.log("Button Name:", circle.dataset.name);
       });
 
       circle.addEventListener("mouseup", () => {
@@ -120,6 +137,7 @@
       circle.addEventListener("touchstart", () => {
         vibrateDevice(); // Vibrate when button is pressed
         circle.style.top = "20px"; // Move the button down by 20px
+        console.log("Button Name:", circle.dataset.name);
       });
 
       circle.addEventListener("touchend", () => {
