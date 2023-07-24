@@ -12,6 +12,10 @@
       font-family: 'Cairo', sans-serif;
     }
 
+    body {
+      background-color: #424242; /* Set the background color to grey */
+    }
+
     .container {
       height: 100%;
       display: flex;
@@ -30,7 +34,7 @@
       height: 10vw;
       border-radius: 50%;
       margin: 5px;
-      background-color: #3498db;
+      background-color: #34db77;
       border: none;
       cursor: pointer;
       box-shadow: 0 20px 1px rgba(0, 0, 0, 1);
@@ -60,26 +64,26 @@
 </head>
 <body>
   <div class="container">
-<div class="row">
-  <button class="menu-button">
-    <div class="black-square"></div>
-    <div class="menu-icon">
-      <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
-      ☰
+    <div class="row">
+      <!-- Menu button with black square background -->
+      <button class="menu-button">
+        <div class="black-square"></div>
+        <div class="menu-icon">
+          <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
+          ☰
+        </div>
+      </button>
     </div>
-  </button>
-</div>
     <div class="row">
       <!-- Add data-name attribute with unique names for each button -->
-            <button class="invisible-button"></button>
+      <button class="invisible-button"></button>
       <button class="circle" data-name="Left"></button>
       <button class="circle" data-name="Down"></button>
       <button class="circle" data-name="Right"></button>
-
       <button class="circle" data-name="1"></button>
       <button class="circle" data-name="2"></button>
       <button class="circle" data-name="3"></button>
-       <button class="circle" data-name="4"></button>
+      <button class="circle" data-name="4"></button>
     </div>
     <div class="row">
       <button class="invisible-button"></button>
@@ -89,10 +93,10 @@
       <button class="circle" data-name="5"></button>
       <button class="circle" data-name="6"></button>
       <button class="circle" data-name="7"></button>
-            <button class="circle" data-name="8"></button>
-         </div>
+      <button class="circle" data-name="8"></button>
+    </div>
     <div class="row">
-       <button class="circle" data-name="Up"></button>
+      <button class="circle" data-name="Up"></button>
     </div>
   </div>
 
@@ -106,16 +110,6 @@
         navigator.vibrate(50);
       }
     }
-<!-- Menu button with black square background -->
-<button class="menu-button">
-  <div class="black-square"></div>
-  <div class="menu-icon">
-    <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
-    ☰
-  </div>
-
-<!-- Input element for file upload -->
-<input type="file" id="background-upload" accept="image/*" style="display: none;">
 
     // Attach click events to buttons for desktop devices
     const circles = document.querySelectorAll(".circle");
@@ -144,6 +138,28 @@
       });
     });
 
+    // Get the paint button element
+    const paintButton = document.querySelector(".custom-background-button");
+
+    // Attach click event to the paint button
+    paintButton.addEventListener("click", () => {
+      // Show the color picker when the button is clicked
+      const colorPicker = document.createElement("input");
+      colorPicker.type = "color";
+      colorPicker.value = "#34db77"; // Set default color
+      colorPicker.addEventListener("change", handleColorChange);
+
+      // Trigger the color picker dialog
+      colorPicker.click();
+    });
+
+    // Function to handle the color change from the color picker
+    function handleColorChange(event) {
+      const color = event.target.value;
+      circles.forEach(circle => {
+        circle.style.backgroundColor = color; // Set the chosen color as the new button color
+      });
+    }
   </script>
 </body>
 </html>
