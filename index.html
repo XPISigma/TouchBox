@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  v.01
   <meta charset="UTF-8">
   <title>TouchBox</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
@@ -15,6 +14,15 @@
 
     body {
       background-color: #424242; /* Set the background color to grey */
+    }
+
+    /* Style for the top left text */
+    .top-left-text {
+      position: absolute;
+      top: 10px; /* Adjust the top position to your desired distance from the top edge */
+      left: 10px; /* Adjust the left position to your desired distance from the left edge */
+      color: white;
+      font-size: 18px; /* Adjust the font size as needed */
     }
 
     .container {
@@ -46,6 +54,11 @@
     .circle:active {
       transform: scale(0.95);
       box-shadow: 0 10px 1px rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+    }
+
+    .circle:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
     }
 
     /* Style for invisible button */
@@ -134,6 +147,9 @@
   </style>
 </head>
 <body>
+  <!-- Top left text -->
+  <div class="top-left-text">TouchBox v0.1<br>by @XPISigmaArt on Twitter<br>ConstructCoreWorks.com</div>
+
   <div class="container">
     <div class="row">
       <button class="circle" data-name="Left"></button>
