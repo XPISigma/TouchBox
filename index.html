@@ -173,7 +173,17 @@
       <button class="circle" data-name="Up"></button>
     </div>
   </div>
+<button onclick="vibrateDevice()">Vibrate</button>
 
+<script>
+  function vibrateDevice() {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(200); // Vibrate for 200 milliseconds
+    } else {
+      alert("Vibration is not supported in this browser/device.");
+    }
+  }
+</script>
   <script>
   </script>
   <!-- Audio element to play the "button.wav" sound -->
