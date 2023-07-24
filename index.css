@@ -14,6 +14,8 @@ body, html {
 
 .row {
   display: flex;
+  flex-basis: 60px; /* Set a fixed height for each row (adjust this value as needed) */
+  justify-content: space-evenly;
 }
 
 .circle {
@@ -46,4 +48,94 @@ body, html {
   height: 10vw;
   visibility: hidden; /* Make the button invisible but still take up space */
   border: none;
+}
+/* Style for the circle button with data-name="Down" */
+button[data-name="Down"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: -10px;
+}
+/* Style for the circle button with data-name="Down" */
+button[data-name="Right"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: 130px;
+}
+/* Style for the circle button with data-name="Down" */
+button[data-name="1"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: 70px;
+}
+/* Style for the circle button with data-name="Down" */
+button[data-name="5"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: 10px;
+}
+button[data-name="6"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: -40px;
+}
+button[data-name="7"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: -40px;
+}
+button[data-name="8"] {
+  /* Add any other specific styles for this button here */
+
+  /* Adjust the position 20 pixels higher up */
+  margin-top: -40px;
+}
+button[data-name="Up"] {
+  position: relative;
+  width: 12vw;
+  height: 12vw;
+  border-radius: 50%;
+  margin: 5px;
+  background-color: #3498db;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 20px 1px rgba(0, 0, 0, 1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/* CSS for the menu button */
+.menu-button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* CSS for the black square background */
+.black-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 5px;
+  opacity: 0.5;
+}
+
+/* CSS for the menu icon */
+.menu-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px; /* Adjust the font size to change the size of the icon */
+  color: white;
 }
