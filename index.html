@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Circle Buttons</title>
+  <title>TouchBox</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
   <style>
     /* Your CSS styles here */
@@ -14,6 +14,10 @@
 
     body {
       background-color: #424242; /* Set the background color to grey */
+        <audio id="buttonSound">
+    <source src="C:\Users\xpisi\OneDrive\Desktop\button.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
     }
 
     .container {
@@ -34,18 +38,17 @@
       height: 10vw;
       border-radius: 50%;
       margin: 5px;
-      background-color: #34db77;
+      background-color: #3498db;
       border: none;
       cursor: pointer;
       box-shadow: 0 20px 1px rgba(0, 0, 0, 1);
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease, top 0.2s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     /* Add animation when button is clicked */
     .circle:active {
       transform: scale(0.95);
-      box-shadow: 0 10px 1px rgba(0, 0, 0, 1);
-      top: 20px; /* Move the button down by 20px when pressed */
+      box-shadow: 0 10px 1px rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
     }
 
     .circle:hover {
@@ -57,26 +60,90 @@
     .invisible-button {
       width: 10vw;
       height: 10vw;
-      visibility: hidden;
+      visibility: hidden; /* Make the button invisible but still take up space */
       border: none;
     }
+
+    /* Style for the circle button with data-name="Down" */
+    button[data-name="Down"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: -10px;
+    }
+
+    /* Style for the circle button with data-name="Right" */
+    button[data-name="Right"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: 130px;
+    }
+
+    /* Style for the circle button with data-name="1" */
+    button[data-name="1"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: 70px;
+    }
+
+    /* Style for the circle button with data-name="5" */
+    button[data-name="5"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: -30px;
+    }
+
+    /* Style for the circle button with data-name="6" */
+    button[data-name="6"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: -60px;
+    }
+
+    /* Style for the circle button with data-name="7" */
+    button[data-name="7"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: -60px;
+    }
+
+    /* Style for the circle button with data-name="8" */
+    button[data-name="8"] {
+      /* Add any other specific styles for this button here */
+
+      /* Adjust the position 20 pixels higher up */
+      margin-top: -60px;
+    }
+
+    /* Style for the circle button with data-name="Up" */
+    button[data-name="Up"] {
+      position: relative;
+      width: 12vw;
+      height: 12vw;
+      border-radius: 50%;
+      margin: 5px;
+      background-color: #3498db;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 20px 1px rgba(0, 0, 0, 1);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    /* Add shadow color to buttons */
+    .circle {
+      box-shadow: 0 20px 1px rgba(0, 0, 0, 1);
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
     <div class="row">
-      <!-- Menu button with black square background -->
-      <button class="menu-button">
-        <div class="black-square"></div>
-        <div class="menu-icon">
-          <!-- Add your menu icon here (e.g., three horizontal lines or the icon of your choice) -->
-          ☰
-        </div>
-      </button>
-    </div>
-    <div class="row">
-      <!-- Add data-name attribute with unique names for each button -->
-      <button class="invisible-button"></button>
       <button class="circle" data-name="Left"></button>
       <button class="circle" data-name="Down"></button>
       <button class="circle" data-name="Right"></button>
@@ -86,7 +153,6 @@
       <button class="circle" data-name="4"></button>
     </div>
     <div class="row">
-      <button class="invisible-button"></button>
       <button class="invisible-button"></button>
       <button class="invisible-button"></button>
       <button class="invisible-button"></button>
@@ -101,65 +167,11 @@
   </div>
 
   <script>
-    // Your JavaScript code here
-
-    // Function to trigger vibration (if supported by the device)
-    function vibrateDevice() {
-      if ('vibrate' in navigator) {
-        // Vibrate for 50 milliseconds
-        navigator.vibrate(50);
-      }
-    }
-
-    // Attach click events to buttons for desktop devices
-    const circles = document.querySelectorAll(".circle");
-    circles.forEach(circle => {
-      circle.addEventListener("mousedown", () => {
-        vibrateDevice(); // Vibrate when button is pressed
-        circle.style.top = "20px"; // Move the button down by 20px
-        console.log("Button Name:", circle.dataset.name);
-      });
-
-      circle.addEventListener("mouseup", () => {
-        circle.style.top = "0"; // Move the button back up to its original position
-      });
-    });
-
-    // Attach touch events to buttons for mobile devices
-    circles.forEach(circle => {
-      circle.addEventListener("touchstart", () => {
-        vibrateDevice(); // Vibrate when button is pressed
-        circle.style.top = "20px"; // Move the button down by 20px
-        console.log("Button Name:", circle.dataset.name);
-      });
-
-      circle.addEventListener("touchend", () => {
-        circle.style.top = "0"; // Move the button back up to its original position
-      });
-    });
-
-    // Get the paint button element
-    const paintButton = document.querySelector(".custom-background-button");
-
-    // Attach click event to the paint button
-    paintButton.addEventListener("click", () => {
-      // Show the color picker when the button is clicked
-      const colorPicker = document.createElement("input");
-      colorPicker.type = "color";
-      colorPicker.value = "#34db77"; // Set default color
-      colorPicker.addEventListener("change", handleColorChange);
-
-      // Trigger the color picker dialog
-      colorPicker.click();
-    });
-
-    // Function to handle the color change from the color picker
-    function handleColorChange(event) {
-      const color = event.target.value;
-      circles.forEach(circle => {
-        circle.style.backgroundColor = color; // Set the chosen color as the new button color
-      });
-    }
   </script>
+  <!-- Audio element to play the "button.wav" sound -->
+  <audio id="myAudio" controls style="display: none;">
+    <source src="button.wav" type="audio/wav">
+    Your browser does not support the audio element.
+  </audio>
 </body>
 </html>
