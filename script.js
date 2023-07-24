@@ -25,7 +25,6 @@
       circle.addEventListener("touchstart", () => {
         vibrateDevice(); // Vibrate when button is pressed
         circle.style.top = "20px"; // Move the button down by 20px
-        console.log("Button Name:", circle.dataset.name);
         playSound();
 
       });
