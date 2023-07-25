@@ -10,6 +10,207 @@
 
   
 <style>
+    /* Your CSS styles here */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Cairo', sans-serif; /* Use the Cairo font for the menu icon and options */
+  font-size: 24px;
+    user-zoom: fixed;
+    user-select: none;
+
+}
+
+body {
+  background-color: #424242; /* Set the background color to grey */
+}  
+
+/* Style for the top left text */
+.top-left-text {
+  position: absolute;
+  bottom: 10px; /* Adjust the top position to your desired distance from the top edge */
+  left: 10px; /* Adjust the left position to your desired distance from the left edge */
+  color: white;
+  font-size: 18px; /* Adjust the font size as needed */
+}
+
+/* Style for the menu icon */
+.menu-icon {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+   user-select: none;
+}
+
+/* Style for the menu options */
+.menu {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  right: 10px;
+  padding: 10px;
+  background-color: black;
+  border-radius: 5px;
+    font-size: 24px;
+  color: white; /* Set the font color for menu options to white */
+   user-select: none;
+}
+
+.menu-button {
+  display: block;
+  margin-bottom: 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+    font-size: 24px;
+   user-select: none;
+}
+
+.menu-button:focus {
+  outline: none;
+}
+
+.menu-button:hover {
+  background-color: #444;
+}
+
+/* Center the container both horizontally and vertically */
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border: 1px solid white;
+  padding: 7vw;
+  border-radius: 2vw; /
+}
+
+.row {
+  display: flex;
+  flex-basis: 60px; /* Set a fixed height for each row (adjust this value as needed) */
+  justify-content: space-evenly;
+}
+
+.circle {
+  position: relative;
+  width: 10vw;
+  height: 10vw;
+  border-radius: 50%;
+  margin: 1vw;
+  background-color: #3498db;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1vw .1vw rgba(0, 0, 0, 1);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+  touch-action: manipulation; /* Ensure smooth touch interactions */
+    transform-origin: center center;
+}
+
+/* Add animation when button is clicked */
+.circle:active {
+  transform: scale(0.95);
+  box-shadow: 0 10px 1px rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+}
+
+/*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2*/
+button[data-name="←"] {
+  top: 0vw;
+  left: 0vw;
+}
+button[data-name="↓"] {
+  top: 0vw;
+  left: .5vw;
+}
+button[data-name="→"] {
+  top: 7vw;
+  left: 0vw;
+}
+button[data-name="LP"] {
+  top: 2vw;
+  left: 0vw;
+}
+button[data-name="MP"] {
+  top: -3vw;
+  left: 0vw;
+}
+button[data-name="HP"] {
+  top: -3vw;
+  left: 0vw;
+}
+button[data-name="L1"] {
+  top: -3vw;
+  left: 0vw;
+}
+button[data-name="LK"] {
+  top: 3vw;
+  left: 17vw;
+}
+button[data-name="MK"] {
+  top: -2vw;
+  left: 17vw;
+}
+button[data-name="HK"] {
+  top: -2vw;
+  left: 17vw;
+}
+button[data-name="L2"] {
+  top: -2vw;
+  left: 17vw;
+}
+
+button[data-name="↑"] {
+  position: relative;
+  width: 12vw;
+  height: 12vw;
+  border: none;
+  cursor: pointer;
+  margin-left: 0px;
+    top: 5vw;
+  left: -5vw;
+}
+/* Your existing CSS styles here */
+
+#touchcircle-container {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Ignore mouse events on the touchcircle and trail */
+  z-index: 9999; /* Ensure the touchcircle and trail appear on top of other elements */
+  top: -100px; /* Adjust this value to position the touchcircle off-screen initially */
+  left: -100px; /* Adjust this value to position the touchcircle off-screen initially */
+}
+
+#touchcircle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none; /* Ensure the touchcircle doesn't capture mouse events */
+  background-color: rgba(255, 255, 255, 0.5); /* Set the touchcircle color and opacity */
+}
+
 </style>
 
 </head>
