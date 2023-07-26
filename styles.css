@@ -19,7 +19,8 @@ body {
   bottom: 10px; /* Adjust the top position to your desired distance from the top edge */
   left: 10px; /* Adjust the left position to your desired distance from the left edge */
   color: white;
-  font-size: 18px; /* Adjust the font size as needed */
+  font-size: 1.5vw; /* Adjust the font size as needed */
+    text-shadow: .1vw .1vw .1vw #000; /* Add an outline effect with a shadow */
 }
 
 /* Style for the menu icon */
@@ -52,6 +53,8 @@ body {
     font-size: 24px;
   color: white; /* Set the font color for menu options to white */
    user-select: none;
+    z-index:5;
+  
 }
 
 .menu-button {
@@ -63,6 +66,7 @@ body {
   cursor: pointer;
     font-size: 24px;
    user-select: none;
+  z-index:5;
 }
 
 .menu-button:focus {
@@ -85,7 +89,8 @@ body {
   align-items: center;
   border: 1px solid white;
   padding: 7vw;
-  border-radius: 2vw; /
+  border-radius: 2vw; 
+  z-index: 0;
 }
 
 .row {
@@ -94,7 +99,7 @@ body {
   justify-content: space-evenly;
 }
 
-.circle {
+.switch {
   position: relative;
   width: 10vw;
   height: 10vw;
@@ -105,21 +110,19 @@ body {
   cursor: pointer;
   box-shadow: 0 1vw .1vw rgba(0, 0, 0, 1);
   transition: background-color 0.1s ease, transform 0.1s ease;
-  touch-action: manipulation; /* Ensure smooth touch interactions */
-    transform-origin: center center;
+  transform-origin: center center;
 }
 
 /* Add animation when button is clicked */
-.circle:active {
+.switch:active {
   transform: scale(0.95);
-  box-shadow: 0 10px 1px rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+  box-shadow: 0 .3vw .1vw rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+    position: relative;
 }
 
 /*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2*/
-button[data-name="←"] {
-  top: 0vw;
-  left: 0vw;
-}
+
+
 button[data-name="↓"] {
   top: 0vw;
   left: .5vw;
@@ -197,4 +200,34 @@ button[data-name="↑"] {
   opacity: 0;
   pointer-events: none; /* Ensure the touchcircle doesn't capture mouse events */
   background-color: rgba(255, 255, 255, 0.5); /* Set the touchcircle color and opacity */
+}
+
+#latest-presses {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  position: top; /* Use fixed position to center the container */
+  top: 0vw; /* Position from the top edge */
+  left: 0; /* Position from the left edge */
+  width: 100%; /* Take up the full width of the screen */
+  transform: translateY(-50%); /* Adjust to vertically center the container */
+background-color: rgba(0, 0, 0, 0.7);
+    z-index:5;
+}
+#latest-presses li {
+  margin-right: 2vw;
+  color: white;
+  font-size: 2vw; /* Set the initial font size for other items */
+    list-style-type: none;
+  padding: 1vw;
+  margin: 0vw;
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  text-shadow: .2vw .2vw .1vw #000; /* Add an outline effect with a shadow */
+    z-index:5;
+
 }
