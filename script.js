@@ -164,3 +164,100 @@ document.querySelectorAll('.switch').forEach(button => {
   });
 });
 
+//test
+// Function to check if the touchcursor is inside a circle button
+function isTouchingCircleButton(x, y) {
+  const buttons = document.querySelectorAll('.switch');
+  for (const button of buttons) {
+    const rect = button.getBoundingClientRect();
+    if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+      return button;
+    }
+  }
+  return null;
+}
+
+// Function to handle touch or mouse move event
+function handleTouchOrMouseMove(event) {
+  const touchcircleContainer = document.getElementById('touchcircle-container');
+  const touchcircle = document.getElementById('touchcircle');
+
+  // Get all active touch points
+  const touches = event.touches || [];
+  const activeTouchPoints = [];
+
+  // Move the touchcircle with the average position of all touch points
+  let touchXSum = 0;
+  let touchYSum = 0;
+  for (const touch of touches) {
+    touchXSum += touch.clientX;
+    touchYSum += touch.clientY;
+    activeTouchPoints.push(touch.identifier);
+  }
+
+  const numActiveTouchPoints = activeTouchPoints.length;
+  if (numActiveTouchPoints > 0) {
+    touchcircleContainer.style.display = 'block';
+    const touchX = touchXSum / numActiveTouchPoints;
+    const touchY = touchYSum / numActiveTouchPoints;
+    touchcircleContainer.style.left = touchX + 'px';
+    touchcircleContainer.style.top = touchY + 'px';
+  } else {
+    touchcircleContainer.style.display = 'none';
+  }
+
+  // Check if any touch point is touching a circle button
+  const touchingCircleMap = new Map();
+  for (const touch of touches) {
+    const x = touch.clientX;
+    const y = touch.clientY;
+    const touchingCircle = isTouchingCircleButton(x, y);
+    if (touchingCircle) {
+      touchingCircleMap.set(touch.identifier, touchingCircle);
+    }
+  }
+
+  // Handle button press/unpress
+  document.querySelectorAll('.switch').forEach(button => {
+    const buttonID = parseInt(button.dataset.id);
+    if (touchingCircleMap.has(buttonID)) {
+      if (!button.classList.contains('active')) {
+        button.classList.add('active');
+        vibrateDevice(); // Vibrate when button is pressed
+        const buttonName = button.dataset.name;
+        updateTextFeed(buttonName); // Update the text feed with the latest press
+        console.log('Button Name:', buttonName);
+      }
+    } else {
+      button.classList.remove('active');
+    }
+  });
+}
+
+// Function to handle touch or mouse end event
+function handleTouchOrMouseEnd(event) {
+  // Handle button unpress for touch points that were released
+  const changedTouches = event.changedTouches || [];
+  for (const touch of changedTouches) {
+    const buttonID = touch.identifier;
+    const button = document.querySelector(`[data-id="${buttonID}"]`);
+    if (button) {
+      button.classList.remove('active');
+    }
+  }
+}
+
+// Attach event listeners for touch and mouse events
+document.addEventListener('touchmove', handleTouchOrMouseMove);
+document.addEventListener('mousemove', handleTouchOrMouseMove);
+document.addEventListener('touchend', handleTouchOrMouseEnd);
+document.addEventListener('mouseup', handleTouchOrMouseEnd);
+
+//disable right click
+// Function to disable right-click on the page
+function disableRightClick(event) {
+  event.preventDefault();
+}
+
+// Attach event listener to disable right-click
+document.addEventListener('contextmenu', disableRightClick);
