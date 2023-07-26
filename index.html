@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
   <meta charset="UTF-8">
   <title>TouchBox</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
@@ -9,7 +10,7 @@
 
   
 <style>
-/* Your CSS styles here */
+  /* Your CSS styles here */
 body, html {
   height: 100%;
   margin: 0;
@@ -30,7 +31,8 @@ body {
   bottom: 10px; /* Adjust the top position to your desired distance from the top edge */
   left: 10px; /* Adjust the left position to your desired distance from the left edge */
   color: white;
-  font-size: 18px; /* Adjust the font size as needed */
+  font-size: 1.5vw; /* Adjust the font size as needed */
+    text-shadow: .1vw .1vw .1vw #000; /* Add an outline effect with a shadow */
 }
 
 /* Style for the menu icon */
@@ -63,6 +65,8 @@ body {
     font-size: 24px;
   color: white; /* Set the font color for menu options to white */
    user-select: none;
+    z-index:5;
+  
 }
 
 .menu-button {
@@ -74,6 +78,7 @@ body {
   cursor: pointer;
     font-size: 24px;
    user-select: none;
+  z-index:5;
 }
 
 .menu-button:focus {
@@ -96,7 +101,8 @@ body {
   align-items: center;
   border: 1px solid white;
   padding: 7vw;
-  border-radius: 2vw; /
+  border-radius: 2vw; 
+  z-index: 0;
 }
 
 .row {
@@ -105,7 +111,7 @@ body {
   justify-content: space-evenly;
 }
 
-.circle {
+.switch {
   position: relative;
   width: 10vw;
   height: 10vw;
@@ -116,21 +122,19 @@ body {
   cursor: pointer;
   box-shadow: 0 1vw .1vw rgba(0, 0, 0, 1);
   transition: background-color 0.1s ease, transform 0.1s ease;
-  touch-action: manipulation; /* Ensure smooth touch interactions */
-    transform-origin: center center;
+  transform-origin: center center;
 }
 
 /* Add animation when button is clicked */
-.circle:active {
+.switch:active {
   transform: scale(0.95);
-  box-shadow: 0 10px 1px rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+  box-shadow: 0 .3vw .1vw rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
+    position: relative;
 }
 
 /*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2*/
-button[data-name="←"] {
-  top: 0vw;
-  left: 0vw;
-}
+
+
 button[data-name="↓"] {
   top: 0vw;
   left: .5vw;
@@ -210,13 +214,46 @@ button[data-name="↑"] {
   background-color: rgba(255, 255, 255, 0.5); /* Set the touchcircle color and opacity */
 }
 
+#latest-presses {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  position: top; /* Use fixed position to center the container */
+  top: 0vw; /* Position from the top edge */
+  left: 0; /* Position from the left edge */
+  width: 100%; /* Take up the full width of the screen */
+  transform: translateY(-50%); /* Adjust to vertically center the container */
+background-color: rgba(0, 0, 0, 0.7);
+    z-index:5;
+}
+#latest-presses li {
+  margin-right: 2vw;
+  color: white;
+  font-size: 2vw; /* Set the initial font size for other items */
+    list-style-type: none;
+  padding: 1vw;
+  margin: 0vw;
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  align-items: center; /* Center the items vertically */
+  text-shadow: .2vw .2vw .1vw #000; /* Add an outline effect with a shadow */
+    z-index:5;
+
+}
+
 </style>
 
 </head>
 <body>
+    <div id="text-feed">
+    <h2></h2>
+    <ul id="latest-presses"></ul>
+  </div>
   <div id="touchcircle-container">
     <div id="touchcircle"></div>
-    <div id="trail-container"></div>
   </div>
 <!-- Menu icon -->
 <div class="menu-icon" onclick="toggleMenu()">☰</div>
@@ -227,33 +264,31 @@ button[data-name="↑"] {
   <button class="menu-button" onclick="changeBackgroundColor()">Background Color</button>
 </div>
   <!-- Top left text -->
-  <div class="top-left-text">TouchBox v0.1<br>by @XPISigmaArt on Twitter<br>ConstructCoreWorks.com</div>
+  <div class="top-left-text">TouchBox v0.2<br>by @XPISigmaArt on Twitter<br>ConstructCoreWorks.com</div>
 
   <div class="container">
     <div class="row">
-      <button class="circle" data-name="←"></button>
-      <button class="circle" data-name="↓"></button>
-      <button class="circle" data-name="→"></button>
-      <button class="circle" data-name="LP"></button>
-      <button class="circle" data-name="MP"></button>
-      <button class="circle" data-name="HP"></button>
-      <button class="circle" data-name="L1"></button>
+      <button class="switch" data-name="←"></button>
+      <button class="switch" data-name="↓"></button>
+      <button class="switch" data-name="→"></button>
+      <button class="switch" data-name="LP"></button>
+      <button class="switch" data-name="MP"></button>
+      <button class="switch" data-name="HP"></button>
+      <button class="switch" data-name="L1"></button>
     </div>
     <div class="row">
-
-
-      <button class="circle" data-name="LK"></button>
-      <button class="circle" data-name="MK"></button>
-      <button class="circle" data-name="HK"></button>
-      <button class="circle" data-name="L2"></button>
+      <button class="switch" data-name="LK"></button>
+      <button class="switch" data-name="MK"></button>
+      <button class="switch" data-name="HK"></button>
+      <button class="switch" data-name="L2"></button>
     </div>
     <div class="row">
-     <button class="circle" data-name="↑"></button>
+     <button class="switch" data-name="↑"></button>
     </div>
   </div>
 
 <script>
-    // Function to trigger vibration (if supported by the device)
+  \// Function to trigger vibration (if supported by the device)
 function vibrateDevice() {
   if ('vibrate' in navigator) {
     // Vibrate for 50 milliseconds
@@ -265,7 +300,7 @@ function vibrateDevice() {
 function setButtonColorFromCache() {
   const storedColor = localStorage.getItem('buttonColor');
   if (storedColor) {
-    document.querySelectorAll('.circle').forEach(circle => {
+    document.querySelectorAll('.switch').forEach(circle => {
       circle.style.backgroundColor = storedColor;
     });
   }
@@ -279,6 +314,16 @@ function setBackgroundColorFromCache() {
   }
 }
 
+// Function to save the button color to cache
+function saveButtonColorToCache(color) {
+  localStorage.setItem('buttonColor', color);
+}
+
+// Function to save the background color to cache
+function saveBackgroundColorToCache(color) {
+  localStorage.setItem('backgroundColor', color);
+}
+
 // Function to toggle the menu visibility
 function toggleMenu() {
   const menu = document.getElementById('menu');
@@ -290,12 +335,12 @@ function changeButtonColor() {
   const colorPicker = document.createElement('input');
   colorPicker.type = 'color';
   colorPicker.addEventListener('input', () => {
-    const buttons = document.querySelectorAll('.circle');
+    const buttons = document.querySelectorAll('.switch');
     const newColor = colorPicker.value;
     buttons.forEach(button => {
       button.style.backgroundColor = newColor;
-      saveButtonColorToCache(newColor); // Save the chosen color to cache
     });
+    saveButtonColorToCache(newColor); // Save the chosen color to cache
   });
   colorPicker.click();
 }
@@ -319,7 +364,21 @@ document.addEventListener('DOMContentLoaded', () => {
   setBackgroundColorFromCache();
 });
 
+// Function to check if the touchcursor is inside a circle button
+function isTouchingCircleButton(x, y) {
+  const buttons = document.querySelectorAll('.switch');
+  for (const button of buttons) {
+    const rect = button.getBoundingClientRect();
+    if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+      return button;
+    }
+  }
+  return null;
+}
+
 //mouse stuff
+let touchcursorVisible = false;
+
 // Function to handle touch or mouse move event
 function handleTouchOrMouseMove(event) {
   const touchcircleContainer = document.getElementById('touchcircle-container');
@@ -328,115 +387,75 @@ function handleTouchOrMouseMove(event) {
   // Check if the left mouse button is held down (for touch, use the first touch point)
   const isLeftButtonDown = event.buttons === 1 || (event.touches && event.touches.length > 0);
 
-  if (isLeftButtonDown) {
-    // Show the touchcircle
-    touchcircleContainer.style.display = 'block';
-
-    // Move the touchcircle with the touch/mouse position
-    const touchX = event.clientX || (event.touches && event.touches[0].clientX);
-    const touchY = event.clientY || (event.touches && event.touches[0].clientY);
-    touchcircleContainer.style.left = touchX + 'px';
-    touchcircleContainer.style.top = touchY + 'px';
-
-    // Check if the touch circle is touching a circle button
-    const touchingCircle = isTouchingCircleButton(touchX, touchY);
-
-    // Handle button press/unpress
-    if (touchingCircle) {
-      if (!pressedButton) {
-        pressedButton = touchingCircle;
-        vibrateDevice(); // Vibrate when button is pressed
-        touchingCircle.style.top = '1vw'; // Move the button down by 1vw
-        console.log('Button Name:', touchingCircle.dataset.name);
-      }
-    } else {
-      if (pressedButton) {
-        pressedButton.style.top = '0'; // Move the button back up to its original position
-        pressedButton = null;
-      }
-    }
-  } else {
-    // Hide the touchcircle when the left button is not held down
-    touchcircleContainer.style.display = 'none';
-
-    // Unpress the button when the touch circle is not touching any circle button
-    if (pressedButton) {
-      pressedButton.style.top = '0'; // Move the button back up to its original position
-      pressedButton = null;
-    }
-  }
-}
-
-// Attach the touch or mouse move event to the document
-document.addEventListener('mousemove', handleTouchOrMouseMove);
-document.addEventListener('touchmove', handleTouchOrMouseMove);
-
-// Function to handle mouse down event (left button pressed)
-function handleMouseDown(event) {
-  const touchcircleContainer = document.getElementById('touchcircle-container');
-
-  // Show the touchcircle
-  touchcircleContainer.style.display = 'block';
-
-  // Move the touchcircle with the mouse position
-  const touchX = event.clientX;
-  const touchY = event.clientY;
+  // Move the touchcircle with the touch/mouse position
+  const touchX = event.clientX || (event.touches && event.touches[0].clientX);
+  const touchY = event.clientY || (event.touches && event.touches[0].clientY);
   touchcircleContainer.style.left = touchX + 'px';
   touchcircleContainer.style.top = touchY + 'px';
-}
 
-// Attach the mouse down event to the document
-document.addEventListener('mousedown', handleMouseDown);
+  // Check if the touch circle is touching a circle button
+  const touchingCircle = isTouchingCircleButton(touchX, touchY);
 
-// Function to handle global mouse up event (left button released)
-function handleGlobalMouseUp() {
-  const touchcircleContainer = document.getElementById('touchcircle-container');
-  touchcircleContainer.style.display = 'none'; // Hide the touchcircle when the left button is released
-
-  // Unpress the button when the touch circle is not touching any circle button
-  if (pressedButton) {
-    pressedButton.style.top = '0'; // Move the button back up to its original position
-    pressedButton = null;
-  }
-}
-
-// Attach the global mouse up event to the document
-document.addEventListener('mouseup', handleGlobalMouseUp);
-
-// Function to handle global touch end event (touch released)
-function handleGlobalTouchEnd() {
-  const touchcircleContainer = document.getElementById('touchcircle-container');
-  touchcircleContainer.style.display = 'none'; // Hide the touchcircle when the touch is released
-
-  // Unpress the button when the touch circle is not touching any circle button
-  if (pressedButton) {
-    pressedButton.style.top = '0'; // Move the button back up to its original position
-    pressedButton = null;
-  }
-}
-
-// Attach the global touch end event to the document
-document.addEventListener('touchend', handleGlobalTouchEnd);
-
-//istouchingcircle
-// Function to check if the touch circle is touching a circle button
-function isTouchingCircleButton(touchX, touchY) {
-  const circles = document.querySelectorAll('.circle');
-  for (const circle of circles) {
-    const rect = circle.getBoundingClientRect();
-    const circleX = rect.left + rect.width / 2;
-    const circleY = rect.top + rect.height / 2;
-    const distance = Math.sqrt((touchX - circleX) ** 2 + (touchY - circleY) ** 2);
-    if (distance <= rect.width / 2) {
-      return circle;
+  // Handle button press/unpress
+  document.querySelectorAll('.switch').forEach(button => {
+    const isTouchingButton = touchingCircle === button;
+    if (isTouchingButton) {
+      if (!button.classList.contains('active')) {
+        button.classList.add('active');
+        vibrateDevice(); // Vibrate when button is pressed
+        console.log('Button Name:', button.dataset.name);
+      }
+    } else {
+      button.classList.remove('active');
     }
+  });
+
+  // Show/hide the touchcircle based on the touchcursor status
+  if (isLeftButtonDown) {
+    touchcircleVisible = true;
+    touchcircleContainer.style.display = 'block';
+  } else {
+    touchcircleVisible = false;
+    touchcircleContainer.style.display = 'none';
   }
-  return null;
 }
+
+//feed
+// Array to keep track of the last 20 button presses
+const buttonPresses = [];
+
+// Function to update the text feed with the latest button press
+function updateTextFeed(buttonName) {
+  buttonPresses.push(buttonName); // Add the latest press to the array
+
+  // Limit the array to 20 items
+  if (buttonPresses.length > 20) {
+    buttonPresses.shift(); // Remove the oldest item
+  }
+
+  const textFeedList = document.getElementById('latest-presses');
+  textFeedList.innerHTML = ''; // Clear the current text feed
+
+  // Add the button presses to the text feed horizontally
+  buttonPresses.forEach(name => {
+    const listItem = document.createElement('li');
+    listItem.textContent = name;
+    textFeedList.appendChild(listItem);
+  });
+}
+
+// Function to handle button press/unpress
+document.querySelectorAll('.switch').forEach(button => {
+  button.addEventListener('click', () => {
+    const buttonName = button.dataset.name;
+    updateTextFeed(buttonName); // Update the text feed with the latest press
+    vibrateDevice(); // Vibrate when button is pressed
+    console.log('Button Name:', buttonName);
+  });
+});
+
 
 </script>
-  <script>
-  </script>
   <!-- Audio element to play the "button.wav" sound -->
   <audio id="myAudio" controls style="display: none;">
     <source src="button.wav" type="audio/wav">
