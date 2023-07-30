@@ -22,21 +22,7 @@ function addSwitchPressToLatest(switchId) {
   updateLatestSwitchesDisplay();
 }
 
-// Function to create a new circle element and position it at the touch coordinates
-function createCircle(x, y) {
-  const circle = document.createElement('div');
-  circle.className = 'touch-circle';
-  circle.style.left = x + 'px';
-  circle.style.top = y + 'px';
-  document.body.appendChild(circle);
-
-  // Remove the circle after 100ms
-  setTimeout(() => {
-    document.body.removeChild(circle);
-  }, 16);
-}
-
-// Function to update the touch count display and create circles
+// Function to update the touch count display and darken the switches
 function updateTouchCount(event) {
   const touchCount = event.touches.length;
   touchDisplay.textContent = touchCount;
@@ -49,38 +35,26 @@ function updateTouchCount(event) {
     });
   }
 
-  // Only create circles and check switches touching circles when there are visible touches
+  // Check if any switch is being touched and not darkened
   if (touchCount > 0) {
-    // Create circles for each touch point
-    for (const touch of event.touches) {
-      createCircle(touch.clientX, touch.clientY);
-    }
-
-    // Check if any switch is touching a touch circle
     switches.forEach((switchElement) => {
       const switchRect = switchElement.getBoundingClientRect();
+      let touchedAndNotDarkened = false;
 
-      // Assume the switch is not touching any circle
-      let touchingCircle = false;
-
-      const touchCircles = document.querySelectorAll('.touch-circle');
-
-      touchCircles.forEach((circle) => {
-        const circleRect = circle.getBoundingClientRect();
-
+      // Check if any touch is within the boundaries of the switch and not darkened
+      for (const touch of event.touches) {
         if (
-          switchRect.left < circleRect.right &&
-          switchRect.right > circleRect.left &&
-          switchRect.top < circleRect.bottom &&
-          switchRect.bottom > circleRect.top
+          touch.clientX >= switchRect.left &&
+          touch.clientX <= switchRect.right &&
+          touch.clientY >= switchRect.top &&
+          touch.clientY <= switchRect.bottom
         ) {
-          touchingCircle = true;
-          return;
+          touchedAndNotDarkened = true;
+          break;
         }
-      });
+      }
 
-      // Add or remove the 'dark' class based on whether the switch is touching a circle
-      if (touchingCircle) {
+      if (touchedAndNotDarkened) {
         if (!switchElement.classList.contains('dark')) {
           switchElement.classList.add('dark');
           addSwitchPressToLatest(switchElement.id);
