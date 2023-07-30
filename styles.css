@@ -1,10 +1,13 @@
 /* Add any desired styling here */
-body {
+body, html {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
   user-select: none; /* Disable text highlighting */
-    background-color: dimgrey;
+  background-color: dimgrey;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
 }
 
 /* Style for the larger green circles */
