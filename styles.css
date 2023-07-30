@@ -1,233 +1,203 @@
-/* Your CSS styles here */
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: 'Cairo', sans-serif; /* Use the Cairo font for the menu icon and options */
-  font-size: 24px;
-    user-zoom: fixed;
-    user-select: none;
-
-}
-
+/* Add any desired styling here */
 body {
-  background-color: #424242; /* Set the background color to grey */
-}  
-
-/* Style for the top left text */
-.top-left-text {
-  position: absolute;
-  bottom: 10px; /* Adjust the top position to your desired distance from the top edge */
-  left: 10px; /* Adjust the left position to your desired distance from the left edge */
-  color: white;
-  font-size: 1.5vw; /* Adjust the font size as needed */
-    text-shadow: .1vw .1vw .1vw #000; /* Add an outline effect with a shadow */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  user-select: none; /* Disable text highlighting */
+    background-color: dimgrey;
 }
 
-/* Style for the menu icon */
-.menu-icon {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 80px;
-  height: 80px;
-  background-color: black;
+/* Style for the larger green circles */
+.touch-circle {
+  width: 2vw;
+  height: 2vw;
   border-radius: 50%;
-  color: white;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-   user-select: none;
+  border: 1vw solid green; /* Set the border properties to create a ring */
+  background-color: transparent; /* Make the background transparent */
+  position: absolute;
+  pointer-events: none; /* Prevent circles from capturing touch events */
+  transform: translate(-50%, -50%); /* Center the circle on the touch coordinates */
+  z-index: 10;
 }
-
-/* Style for the menu options */
-.menu {
-  display: none;
-  position: fixed;
-  bottom: 100px;
-  right: 10px;
-  padding: 10px;
+.background {
   background-color: black;
-  border-radius: 5px;
-    font-size: 24px;
-  color: white; /* Set the font color for menu options to white */
-   user-select: none;
-    z-index:5;
-  
+  position: absolute;
+  z-index: 0;
+    border: .2vw solid white;
+  padding: 1vw;
+  border-radius: 2vw;
+  background-color: black;
+    z-index: 3; 
 }
-
-.menu-button {
-  display: block;
-  margin-bottom: 10px;
-  background-color: transparent;
-  color: white;
-  border: none;
-  cursor: pointer;
-    font-size: 24px;
-   user-select: none;
-  z-index:5;
+.text {
+  color: invisible;
+  font-size: 2vw;
+  font-family: Cairo, sans-serif;
+  z-index: 4; 
 }
-
-.menu-button:focus {
-  outline: none;
-}
-
-.menu-button:hover {
-  background-color: #444;
-}
-
-/* Center the container both horizontally and vertically */
-.container {
+/* Style for the switch container */
+.switch-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 1px solid white;
-  padding: 7vw;
-  border-radius: 2vw; 
-  z-index: 0;
+  justify-content: space-around; /* Adjust this property for spacing between switches */
+  align-items: center; /* Center the switches vertically */
+  border: 0.2vw solid white;
+  padding: 2vw;
+  flex-wrap: wrap;
+  border-radius: 2vw;
+  background-color: black;
+  box-sizing: border-box;
+   height: 60vw;
+  width: 90vw;
 }
 
-.row {
-  display: flex;
-  flex-basis: 60px; /* Set a fixed height for each row (adjust this value as needed) */
-  justify-content: space-evenly;
-}
-
+/* Style for the switches */
 .switch {
-  position: relative;
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
+  background-color: gray;
   margin: 1vw;
-  background-color: #3498db;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 1vw .1vw rgba(0, 0, 0, 1);
-  transition: background-color 0.1s ease, transform 0.1s ease;
-  transform-origin: center center;
 }
-
-/* Add animation when button is clicked */
-.switch:active {
-  transform: scale(0.95);
-  box-shadow: 0 .3vw .1vw rgba(0, 0, 0, 1); /* Slightly reduce the shadow when button is clicked */
-    position: relative;
+.switch.dark {
+  background-color: #333; /* Darker color when touched */
 }
 
 /*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2*/
-
-
-button[data-name="↓"] {
-  top: 0vw;
-  left: .5vw;
-}
-button[data-name="→"] {
-  top: 7vw;
-  left: 0vw;
-}
-button[data-name="LP"] {
-  top: 2vw;
-  left: 0vw;
-}
-button[data-name="MP"] {
-  top: -3vw;
-  left: 0vw;
-}
-button[data-name="HP"] {
-  top: -3vw;
-  left: 0vw;
-}
-button[data-name="L1"] {
-  top: -3vw;
-  left: 0vw;
-}
-button[data-name="LK"] {
-  top: 3vw;
-  left: 17vw;
-}
-button[data-name="MK"] {
-  top: -2vw;
-  left: 17vw;
-}
-button[data-name="HK"] {
-  top: -2vw;
-  left: 17vw;
-}
-button[data-name="L2"] {
-  top: -2vw;
-  left: 17vw;
+#← {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 27%;
+  left: 10%;
+  transform: translate(-50%, -50%);
 }
 
-button[data-name="↑"] {
-  position: relative;
+#↓ {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 27%;
+  left: 24%; 
+  transform: translate(-50%, -50%);
+}
+#→ {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+    top: 38%;
+  left: 36%; 
+  transform: translate(-50%, -50%);
+}
+#LP {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 28%; 
+  left: 49%; 
+  transform: translate(-50%, -50%);
+}
+#MP {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 17%; 
+  left: 62%; 
+  transform: translate(-50%, -50%);
+}
+#HP {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 17%; 
+  left: 75%; 
+  transform: translate(-50%, -50%);
+}
+#L1 {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 17%; 
+  left: 88%; 
+  transform: translate(-50%, -50%);
+}
+#LK {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 48%; 
+  left: 49%; 
+  transform: translate(-50%, -50%);
+}
+#MK {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 37%; 
+  left: 62%; 
+  transform: translate(-50%, -50%);
+}
+#HK {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 37%; 
+  left: 75%; 
+  transform: translate(-50%, -50%);
+}
+
+#L2 {
+  position: absolute;
+  width: 10vw;
+  height: 10vw;
+  border: none;
+  cursor: pointer;
+  top: 37%; 
+  left: 88%; 
+  transform: translate(-50%, -50%);
+}
+
+#↑ {
+  position: absolute;
   width: 12vw;
   height: 12vw;
   border: none;
   cursor: pointer;
-  margin-left: 0px;
-    top: 5vw;
-  left: -5vw;
-}
-/* Your existing CSS styles here */
-
-#touchcircle-container {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: white;
+  top: 74%;
+  left: 44%; 
   transform: translate(-50%, -50%);
-  pointer-events: none; /* Ignore mouse events on the touchcircle and trail */
-  z-index: 9999; /* Ensure the touchcircle and trail appear on top of other elements */
-  top: -100px; /* Adjust this value to position the touchcircle off-screen initially */
-  left: -100px; /* Adjust this value to position the touchcircle off-screen initially */
 }
-
-#touchcircle {
+.latest-switches-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  pointer-events: none; /* Ensure the touchcircle doesn't capture mouse events */
-  background-color: rgba(255, 255, 255, 0.5); /* Set the touchcircle color and opacity */
-}
-
-#latest-presses {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center; /* Center the items horizontally */
-  align-items: center; /* Center the items vertically */
-  position: top; /* Use fixed position to center the container */
-  top: 0vw; /* Position from the top edge */
-  left: 0; /* Position from the left edge */
-  width: 100%; /* Take up the full width of the screen */
-  transform: translateY(-50%); /* Adjust to vertically center the container */
-background-color: rgba(0, 0, 0, 0.7);
-    z-index:5;
-}
-#latest-presses li {
-  margin-right: 2vw;
   color: white;
-  font-size: 2vw; /* Set the initial font size for other items */
-    list-style-type: none;
-  padding: 1vw;
-  margin: 0vw;
-  display: flex;
-  justify-content: center; /* Center the items horizontally */
-  align-items: center; /* Center the items vertically */
-  text-shadow: .2vw .2vw .1vw #000; /* Add an outline effect with a shadow */
-    z-index:5;
-
+  font-size: 2.2vw; /* Adjust font size as needed */
+  font-family: Cairo, sans-serif;
+  font-weight: bold;
+  top: -6%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap; /* Prevent text from wrapping */
 }
