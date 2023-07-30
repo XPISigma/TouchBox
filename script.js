@@ -95,6 +95,9 @@ function updateTouchCount(event) {
       switchElement.classList.remove('dark');
     });
   }
+
+  // Call requestAnimationFrame to run the updateTouchCount function every frame
+  requestAnimationFrame(updateTouchCount);
 }
 
 // Function to disable pinch zooming
@@ -123,3 +126,7 @@ document.addEventListener('click', function(event) {
 document.addEventListener('contextmenu', function(event) {
   event.preventDefault();
 });
+
+// The following line will uncap the frame rate, running at the maximum possible frame rate.
+// If there is no other code limiting the frame rate, the website will run at the device's refresh rate.
+requestAnimationFrame(updateTouchCount);
