@@ -1,64 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TouchBox</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-
-  
-<style>
-</style>
-
 </head>
 <body>
-    <div id="text-feed">
-    <h2></h2>
-    <ul id="latest-presses"></ul>
-  </div>
-  <div id="touchcircle-container">
-    <div id="touchcircle"></div>
-  </div>
-<!-- Menu icon -->
-<div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-<!-- Menu options -->
-<div class="menu" id="menu">
-  <button class="menu-button" onclick="changeButtonColor()">Button Color</button>
-  <button class="menu-button" onclick="changeBackgroundColor()">Background Color</button>
-</div>
-  <!-- Top left text -->
-  <div class="top-left-text">TouchBox v0.2<br>by @XPISigmaArt on Twitter<br>ConstructCoreWorks.com</div>
 
-  <div class="container">
-    <div class="row">
-      <button class="switch" data-name="←"></button>
-      <button class="switch" data-name="↓"></button>
-      <button class="switch" data-name="→"></button>
-      <button class="switch" data-name="LP"></button>
-      <button class="switch" data-name="MP"></button>
-      <button class="switch" data-name="HP"></button>
-      <button class="switch" data-name="L1"></button>
-    </div>
-    <div class="row">
-      <button class="switch" data-name="LK"></button>
-      <button class="switch" data-name="MK"></button>
-      <button class="switch" data-name="HK"></button>
-      <button class="switch" data-name="L2"></button>
-    </div>
-    <div class="row">
-     <button class="switch" data-name="↑"></button>
-    </div>
+
   </div>
+  <!-- New container for the switches -->
+  <div class="switch-container">
 
-<script>
-</script>
-  <!-- Audio element to play the "button.wav" sound -->
-  <audio id="myAudio" controls style="display: none;">
-    <source src="button.wav" type="audio/wav">
-    Your browser does not support the audio element.
-  </audio>
+
+    <div class="switch" id="←"></div>
+    <div class="switch" id="↓"></div>
+    <div class="switch" id="→"></div>
+    <div class="switch" id="LP"></div>
+    <div class="switch" id="MP"></div>
+    <div class="switch" id="HP"></div>
+    <div class="switch" id="L1"></div>
+    <div class="switch" id="LK"></div>
+    <div class="switch" id="MK"></div>
+    <div class="switch" id="HK"></div>
+    <div class="switch" id="L2"></div>
+    <div class="switch" id="↑"></div>
+    <div class="text" id="touchDisplay"></div>
+    <div class="last-touched-container" id="lastTouchedContainer">
+  </div>
+  <!-- Container for the latest switch presses -->
+  <div class="latest-switches-container" id="latestSwitchesContainer"></div>
+  <script src="script.js"></script>
 </body>
 </html>
