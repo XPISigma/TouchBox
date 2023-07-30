@@ -33,7 +33,7 @@ function createCircle(x, y) {
   // Remove the circle after 100ms
   setTimeout(() => {
     document.body.removeChild(circle);
-  }, 1);
+  }, 16);
 }
 
 // Function to update the touch count display and create circles
