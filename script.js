@@ -15,15 +15,19 @@ function updateLatestSwitchesDisplay() {
   latestSwitchesContainer.innerHTML = latestSwitchPresses.join("   ");
 }
 
+// Audio element for the switch sound
+const switchSound = document.getElementById("switchSound");
+
 // Function to add the switch ID to the latestSwitchPresses array
 function addSwitchPressToLatest(switchId) {
+  // Play the switch sound
+  switchSound.play();
+
   latestSwitchPresses.push(switchId);
   if (latestSwitchPresses.length > 20) {
     latestSwitchPresses.shift(); // Remove the oldest switch press if the array exceeds 20 elements
   }
   updateLatestSwitchesDisplay();
-    const switchSound = document.getElementById("switchSound");
-  switchSound.play();
 }
 
 // Function to update the touch count display and darken the switches
