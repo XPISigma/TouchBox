@@ -1,5 +1,6 @@
-body,html {
-    font-family:Cairo, sans-serif;
+body,
+html {
+  font-family: Cairo, sans-serif;
   text-align: center;
   padding: 1vw;
   user-select: none;
@@ -10,7 +11,7 @@ body,html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-    font-weight: bold;
+  font-weight: bold;
 }
 .menu-trigger {
   cursor: pointer;
@@ -46,7 +47,7 @@ body,html {
   position: center;
   font-size: 2vw;
   color: white;
-    top: 50%;
+  top: 50%;
   left: 50%;
 }
 
@@ -97,7 +98,7 @@ body,html {
   padding: 2vw;
   flex-wrap: wrap;
   border-radius: 2vw;
-  background-color: invisible;
+  background-color: transparent;
   box-sizing: border-box;
   height: 55vw;
   width: 90vw;
@@ -267,6 +268,6 @@ body,html {
   top: 59%;
   left: 8%;
   transform: translate(-50%, -50%);
-    position: relative;
-    font-display: swap; 
+  position: relative;
+  font-display: swap;
 }
