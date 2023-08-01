@@ -23,27 +23,25 @@
       <div class="switch" id="L2"></div>
       <div class="switch" id="🡹"></div>
       <div class="text" id="touchDisplay"></div>
- <div class="menu" onclick="toggleMenu()">    
-    <div class="menu-trigger">
-    <div class="menu-icon"></div>
     </div>
-    <div class="menu-items" onclick="event.stopPropagation()">
-      <div class="menu-item" onclick="openFileInput()">Upload Background</div>   
-      <input type="file" id="fileInput" style="display: none" accept="image/*">
-      <div class="menu-item" onclick="toggleButtonColor()">Button Color</div>
-      <input type="color" id="colorPicker" style="display: none">
-      <div class="menu-item" onclick="toggleVibration()">Vibration (<span id="vibration-status">On</span>)</div>
-      <div class="menu-item" id="fullscreenMenuItem">Full Screen</div>
-    </div>
-  </div>
+    <div class="menu" onclick="toggleMenu()">    
+      <div class="menu-trigger">
+        <div class="menu-icon"></div>
+      </div>
+      <div class="menu-items" onclick="event.stopPropagation()">
+        <div class="menu-item" onclick="openFileInput()">Upload Background</div>   
+        <input type="file" id="fileInput" style="display: none" accept="image/*">
+        <div class="menu-item" onclick="toggleButtonColor()">Button Color</div>
+        <input type="color" id="colorPicker" style="display: none">
+        <div class="menu-item" onclick="toggleVibration()">Vibration (<span id="vibration-status">On</span>)</div>
+        <div class="menu-item" id="fullscreenMenuItem">Full Screen</div>
+      </div>
+    </div> 
     <div class="latest-switches-container" id="latestSwitchesContainer"></div>
-      
-<script src="script.js"></script>
- 
-<audio id="switchSound" preload="auto">
-  <source src="path_to_button.wav" type="audio/wav">
-</audio>
-
-
+  </div>
+  <audio id="switchSound" preload="auto">
+    <source src="path_to_button.wav" type="audio/wav">
+  </audio>
+  <script src="script.js"></script>
 </body>
 </html>
