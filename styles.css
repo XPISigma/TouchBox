@@ -18,14 +18,14 @@ html {
   border: 0.2vw solid white;
   background-color: black;
   border-radius: 1.3vw;
-  width: 2vw;
-  height: 2vw;
+  width: 2.4vw;
+  height: 2.4vw;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  top: 28vw;
-  left: -60vw;
+  top: 26vw;
+  left: -61vw;
   transform: translate(-50%, -50%);
 }
 .menu-icon {
