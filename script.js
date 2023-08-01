@@ -180,6 +180,8 @@ function handleColorPickerChange(event) {
   switches.forEach((switchElement) => {
     switchElement.style.backgroundColor = selectedColor;
   });
+        localStorage.setItem("switchColor", selectedColor);
+
 }
 
 
