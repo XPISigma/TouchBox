@@ -1,76 +1,123 @@
-/* Add any desired styling here */
-body, html {
+body,
+html {
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 20px;
-  user-select: none; /* Disable text highlighting */
-  background-color: dimgrey;
+  user-select: none;
+  background: linear-gradient(to bottom, #111111, #333333);
   height: 100%;
   margin: 0;
   overflow: hidden;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
-
-/* Style for the larger green circles */
-.touch-circle {
+.menu-trigger {
+  cursor: pointer;
+  padding: 0.4vw;
+  border: 0.2vw solid white;
+  background-color: black;
+  border-radius: 1.3vw;
   width: 2vw;
   height: 2vw;
-  border-radius: 50%;
-  border: 1vw solid green; /* Set the border properties to create a ring */
-  background-color: transparent; /* Make the background transparent */
-  position: absolute;
-  pointer-events: none; /* Prevent circles from capturing touch events */
-  transform: translate(-50%, -50%); /* Center the circle on the touch coordinates */
-  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 28vw;
+  left: -60vw;
+  transform: translate(-50%, -50%);
+}
+.menu-icon {
+  width: 2vw;
+  height: 2vw;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2vw;
+  font-family: Cairo, sans-serif;
+  z-index: 4;
+}
+.menu-icon::after {
+  content: "\2630"; /* Unicode for the ☰ character */
+  position: center;
+  font-size: 2vw;
+  color: white;
+    top: 50%;
+  left: 50%;
+}
+
+.menu-items {
+  display: none;
+  background-color: #000;
+  padding: 2vw;
+  border: 0.2vw solid white;
+  border-radius: 1.3vw;
+  min-width: 25vw;
+  color: white;
+  font-size: 2vw;
+  font-family: Cairo, sans-serif;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  top: 27vw;
+  left: -28vw;
+  transform: translate(-50%, -50%);
+}
+
+.menu-item {
+  cursor: pointer;
+  padding: 1vw;
+}
+
+.menu-item:hover {
+  background-color: teal;
+  border-radius: 1vw;
 }
 .background {
   background-color: black;
   position: absolute;
-  z-index: 0;
-    border: .2vw solid white;
+  border: 0.2vw solid white;
   padding: 1vw;
   border-radius: 2vw;
-  background-color: black;
-    z-index: 3; 
 }
-.text {
-  color: invisible;
-  font-size: 2vw;
-  font-family: Cairo, sans-serif;
-  z-index: 4; 
-}
-/* Style for the switch container */
 .switch-container {
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-  justify-content: space-around; /* Adjust this property for spacing between switches */
-  align-items: center; /* Center the switches vertically */
+  justify-content: space-around;
+  align-items: center;
   border: 0.2vw solid white;
   padding: 2vw;
   flex-wrap: wrap;
   border-radius: 2vw;
-  background-color: black;
+  background-color: invisible;
   box-sizing: border-box;
-   height: 60vw;
+  height: 55vw;
   width: 90vw;
+  background-size: cover;
 }
 
-/* Style for the switches */
 .switch {
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
   background-color: gray;
   margin: 1vw;
+  box-shadow: 0 1vw 0.08vw rgba(0, 0, 0, 0.45);
 }
 .switch.dark {
-  background-color: #333; /* Darker color when touched */
+  background-color: white;
 }
 
-/*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2*/
-#← {
+/*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2 🡸🡻🡺🡹  🡼 🡽 🡾 🡿*/
+#🡸 {
   position: absolute;
   width: 10vw;
   height: 10vw;
@@ -81,24 +128,24 @@ body, html {
   transform: translate(-50%, -50%);
 }
 
-#↓ {
+#🡻 {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
   cursor: pointer;
   top: 27%;
-  left: 24%; 
+  left: 24%;
   transform: translate(-50%, -50%);
 }
-#→ {
+#🡺 {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
   cursor: pointer;
-    top: 38%;
-  left: 36%; 
+  top: 38%;
+  left: 36%;
   transform: translate(-50%, -50%);
 }
 #LP {
@@ -107,8 +154,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 28%; 
-  left: 49%; 
+  top: 28%;
+  left: 49%;
   transform: translate(-50%, -50%);
 }
 #MP {
@@ -117,8 +164,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 17%; 
-  left: 62%; 
+  top: 17%;
+  left: 62%;
   transform: translate(-50%, -50%);
 }
 #HP {
@@ -127,8 +174,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 17%; 
-  left: 75%; 
+  top: 17%;
+  left: 75%;
   transform: translate(-50%, -50%);
 }
 #L1 {
@@ -137,8 +184,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 17%; 
-  left: 88%; 
+  top: 17%;
+  left: 88%;
   transform: translate(-50%, -50%);
 }
 #LK {
@@ -147,8 +194,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 48%; 
-  left: 49%; 
+  top: 48%;
+  left: 49%;
   transform: translate(-50%, -50%);
 }
 #MK {
@@ -157,8 +204,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 37%; 
-  left: 62%; 
+  top: 37%;
+  left: 62%;
   transform: translate(-50%, -50%);
 }
 #HK {
@@ -167,8 +214,8 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 37%; 
-  left: 75%; 
+  top: 37%;
+  left: 75%;
   transform: translate(-50%, -50%);
 }
 
@@ -178,29 +225,36 @@ body, html {
   height: 10vw;
   border: none;
   cursor: pointer;
-  top: 37%; 
-  left: 88%; 
+  top: 37%;
+  left: 88%;
   transform: translate(-50%, -50%);
 }
 
-#↑ {
+#🡹 {
   position: absolute;
   width: 12vw;
   height: 12vw;
   border: none;
   cursor: pointer;
   top: 74%;
-  left: 44%; 
+  left: 44%;
   transform: translate(-50%, -50%);
 }
 .latest-switches-container {
   position: absolute;
-  color: white;
-  font-size: 2.2vw; /* Adjust font size as needed */
+  color: black;
+  font-size: 2.4vw;
   font-family: Cairo, sans-serif;
   font-weight: bold;
-  top: -6%;
+  top: 1%;
   left: 50%;
   transform: translateX(-50%);
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 1px;
+}
+.text {
+  color: invisible;
+  font-size: 0vw;
+  font-family: Cairo, sans-serif;
 }
