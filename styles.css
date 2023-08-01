@@ -1,5 +1,5 @@
 body,html {
-  font-family: Arial, sans-serif;
+    font-family:Cairo, sans-serif;
   text-align: center;
   padding: 1vw;
   user-select: none;
@@ -10,6 +10,7 @@ body,html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+    font-weight: bold;
 }
 .menu-trigger {
   cursor: pointer;
@@ -24,7 +25,7 @@ body,html {
   justify-content: center;
   position: relative;
   top: 26vw;
-  left: -61vw;
+  left: -72.5vw;
   transform: translate(-50%, -50%);
 }
 .menu-icon {
@@ -256,4 +257,16 @@ body,html {
   color: invisible;
   font-size: 0vw;
   font-family: Cairo, sans-serif;
+}
+
+.touchbox-version {
+  font-size: 2vw;
+  color: white;
+  margin-top: 2vw;
+  font-family: "Cairo", sans-serif;
+  top: 59%;
+  left: 8%;
+  transform: translate(-50%, -50%);
+    position: relative;
+    font-display: swap; 
 }
