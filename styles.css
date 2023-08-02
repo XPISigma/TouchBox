@@ -32,15 +32,15 @@ html {
 }
 
 .menu-icon {
-  width: 3w;
-  height: 3w;
+  width: 3vw;
+  height: 3vw;
   position: relative;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 3w;
+  font-size: 3vw;
   font-family: Cairo, sans-serif;
   z-index: 4;
 }
@@ -134,7 +134,6 @@ html {
   border-radius: 50%;
   background-color: black;
   margin: 1vw;
-  box-shadow: 0 1vw 0.08vw rgba(0, 0, 0, 0.45);
     box-shadow: 0 0 2vw rgba(255, 255, 255, 0.8);
 }
 .switch.dark {
