@@ -13,7 +13,7 @@
     <!-- New container for the switches -->
     
   <div class="switch-container">
-      <div class="touchbox-version">TouchBox 1.0 by XPISigmaArt (Twitter)</div>
+          <div class="touchbox-version">TouchBox 1.0 by XPISigmaArt (Twitter)</div>
        <div class="switch" id="⬅️"></div>
       <div class="switch" id="⬇️"></div>
       <div class="switch" id="➡️"></div>
@@ -27,11 +27,11 @@
       <div class="switch" id="L2"></div>
       <div class="switch" id="⬆️"></div>
       <div class="text" id="touchDisplay"></div>
-      <div class="menu" onclick="toggleMenu()">   </div> 
-      <div class="menu-trigger"></div>
-      <div class="menu-icon"></div>
-      </div>
-      <div class="menu-items" onclick="event.stopPropagation()">
+ <div class="menu" onclick="toggleMenu()">    
+    <div class="menu-trigger">
+    <div class="menu-icon"></div>
+    </div>
+    <div class="menu-items" onclick="event.stopPropagation()">
       <div class="menu-item" onclick="openFileInput()">Upload Background</div>   
       <input type="file" id="fileInput" style="display: none" accept="image/*">
       <div class="menu-item" onclick="toggleButtonColor()">Button Color</div>
@@ -39,6 +39,7 @@
       <div class="menu-item" onclick="toggleVibration()">Vibration (<span id="vibration-status">On</span>)</div>
       <div class="menu-item" id="fullscreenMenuItem">Full Screen</div>
     </div>
+  </div> 
     <div class="latest-switches-container" id="latestSwitchesContainer"></div>
       
 
@@ -46,6 +47,8 @@
       <audio id="switchSound" preload="auto">
   <source src="https://github.com/XPISigma/TouchBox/raw/main/buttonsound.mp3" type="audio/wav">
 </audio>
+      
+</div>
 <script src="script.js"></script>
 </body>
 </html>
