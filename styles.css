@@ -1,8 +1,8 @@
 body,
 html {
-  font-family: Cairo, sans-serif;
+  font-family: Arial, sans-serif;
   text-align: center;
-  padding: 1vw;
+  padding: 20px;
   user-select: none;
   background: linear-gradient(to bottom, #111111, #333333);
   height: 100%;
@@ -11,34 +11,36 @@ html {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  font-weight: bold;
 }
 .menu-trigger {
-  cursor: pointer;
   padding: 0.4vw;
   border: 0.2vw solid white;
   background-color: black;
-  border-radius: 1.3vw;
-  width: 2.4vw;
-  height: 2.4vw;
+  border-radius: 1.9vw;
+  width: 4vw;
+  height: 4vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  top: 26vw;
-  left: -72.5vw;
+  position: fixed; /* Change to 'fixed' to position it relative to the viewport */
+  bottom: -1vh; /* Distance from the bottom of the viewport */
+  left: 4.5vh; /* Distance from the left of the viewport */
   transform: translate(-50%, -50%);
+  max-height: 4vh;
+  max-width: 4vh;
+  z-index: 4; /* Set a higher z-index to ensure it appears above other elements */
 }
+
 .menu-icon {
-  width: 2vw;
-  height: 2vw;
+  width: 3w;
+  height: 3w;
   position: relative;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 2vw;
+  font-size: 3w;
   font-family: Cairo, sans-serif;
   z-index: 4;
 }
@@ -47,7 +49,7 @@ html {
   position: center;
   font-size: 2vw;
   color: white;
-  top: 50%;
+    top: 50%;
   left: 50%;
 }
 
@@ -65,9 +67,10 @@ html {
   justify-content: center;
   position: relative;
   cursor: pointer;
-  top: 27vw;
-  left: -28vw;
+  top: 29vw;
+  left: -14vw;
   transform: translate(-50%, -50%);
+    z-index: 5;
 }
 
 .menu-item {
@@ -86,9 +89,27 @@ html {
   padding: 1vw;
   border-radius: 2vw;
 }
+.switch-container-lighting {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1vw solid rgba(255, 255, 255, 0.1);
+  padding: 2vw;
+  flex-wrap: wrap;
+  border-radius: 2.2vw;
+  background-color: invisible;
+  box-sizing: border-box;
+  height: 61vw;
+  width: 91vw;
+  background-size: cover;
+}
 .switch-container {
   position: absolute;
-  top: 52%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -100,124 +121,139 @@ html {
   border-radius: 2vw;
   background-color: transparent;
   box-sizing: border-box;
-  height: 55vw;
+  height: 60vw;
   width: 90vw;
   background-size: cover;
+  max-height: 80vh;
+  max-width: calc(80vh * 9 / 6);
 }
 
 .switch {
   width: 10vw;
   height: 10vw;
   border-radius: 50%;
-  background-color: gray;
+  background-color: black;
   margin: 1vw;
   box-shadow: 0 1vw 0.08vw rgba(0, 0, 0, 0.45);
+    box-shadow: 0 0 2vw rgba(255, 255, 255, 0.8);
 }
 .switch.dark {
   background-color: white;
+  box-shadow: 0 0 2vw rgba(255, 255, 255, 1);
 }
 
 /*Button Customization ←↓→↑ LPMPHPL1 LKMKHKL2 🡸🡻🡺🡹  🡼 🡽 🡾 🡿*/
-#🡸 {
+#⬅️ {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 27%;
   left: 10%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
+
 }
 
-#🡻 {
+#⬇️ {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 27%;
   left: 24%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
-#🡺 {
+#➡️ {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 38%;
   left: 36%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #LP {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 28%;
   left: 49%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #MP {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 17%;
   left: 62%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #HP {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 17%;
   left: 75%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #L1 {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 17%;
   left: 88%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #LK {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 48%;
   left: 49%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #MK {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 37%;
   left: 62%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 #HK {
   position: absolute;
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 37%;
   left: 75%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 
 #L2 {
@@ -225,21 +261,23 @@ html {
   width: 10vw;
   height: 10vw;
   border: none;
-  cursor: pointer;
   top: 37%;
   left: 88%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 
-#🡹 {
+#⬆️ {
   position: absolute;
   width: 12vw;
   height: 12vw;
   border: none;
-  cursor: pointer;
   top: 74%;
   left: 44%;
   transform: translate(-50%, -50%);
+  max-height: 14vh;
+  max-width: 14vh;
 }
 .latest-switches-container {
   position: absolute;
@@ -255,19 +293,23 @@ html {
   -webkit-text-stroke: 1px;
 }
 .text {
-  color: invisible;
+  color: transparent;
   font-size: 0vw;
   font-family: Cairo, sans-serif;
 }
-
 .touchbox-version {
-  font-size: 2vw;
-  color: white;
-  margin-top: 2vw;
-  font-family: "Cairo", sans-serif;
-  top: 59%;
-  left: 8%;
-  transform: translate(-50%, -50%);
-  position: relative;
-  font-display: swap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed; /* Change to 'fixed' to position it relative to the viewport */
+  bottom: 2vh; /* Distance from the bottom of the viewport */
+  right: 13vh; /* Distance from the right of the viewport */
+  transform: translate(50%, 50%);
+  font-size: 1.5vw;
+  font-family: Cairo, sans-serif;
+  color: black;
+  background-color: white; /* Set the background color to black */
+  font-weight: bold; /* Make the font bold */
+    padding: .2vw;
+    border-radius: 1.3vw;
 }
