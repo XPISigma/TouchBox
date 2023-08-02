@@ -49,7 +49,7 @@ html {
   position: center;
   font-size: 2vw;
   color: white;
-    top: 50%;
+  top: 50%;
   left: 50%;
 }
 
@@ -70,7 +70,7 @@ html {
   top: 29vw;
   left: -14vw;
   transform: translate(-50%, -50%);
-    z-index: 5;
+  z-index: 5;
 }
 
 .menu-item {
@@ -134,7 +134,7 @@ html {
   border-radius: 50%;
   background-color: black;
   margin: 1vw;
-    box-shadow: 0 0 2vw rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 2vw rgba(255, 255, 255, 0.8);
 }
 .switch.dark {
   background-color: white;
@@ -152,7 +152,6 @@ html {
   transform: translate(-50%, -50%);
   max-height: 14vh;
   max-width: 14vh;
-
 }
 
 #⬇️ {
@@ -309,6 +308,6 @@ html {
   color: black;
   background-color: white; /* Set the background color to black */
   font-weight: bold; /* Make the font bold */
-    padding: .2vw;
-    border-radius: 1.3vw;
+  padding: 0.2vw;
+  border-radius: 1.3vw;
 }
