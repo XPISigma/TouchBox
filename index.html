@@ -1,54 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" , charset="UTF-8">
   <title>TouchBox</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+  <style>
+    body,
+    html {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 1vw;
+      user-select: none;
+      background: linear-gradient(to bottom, #111111, #333333);
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
 
+    .menu-trigger {
+      padding: 0.4vw;
+      border: 0.2vw solid white;
+      background-color: black;
+      border-radius: 1.9vw;
+      width: 4vw;
+      height: 4vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: -1vh;
+      left: 4.5vh;
+      transform: translate(-50%, -50%);
+      max-height: 4vh;
+      max-width: 4vh;
+      z-index: 4;
+    }
+
+    .menu-icon {
+      width: 3vw;
+      height: 3vw;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 3vw;
+      font-family: Cairo, sans-serif;
+      z-index: 4;
+    }
+
+    .menu-icon::after {
+      content: "\2630";
+      position: center;
+      font-size: 2vw;
+      color: white;
+      top: 50%;
+      left: 50%;
+    }
+
+    .menu-items {
+      display: none;
+      background-color: #000;
+      padding: 2vw;
+      border: 0.2vw solid white;
+      border-radius: 1.3vw;
+      min-width: 25vw;
+      color: white;
+      font-size: 2vw;
+      font-family: Cairo, sans-serif;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      top: 29vw;
+      left: -14vw;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+    }
+
+    .menu-item {
+      cursor: pointer;
+      padding: 1vw;
+    }
+
+    .menu-item:hover {
+      background-color: teal;
+      border-radius: 1vw;
+    }
+
+    .background {
+      background-color: black;
+      position: absolute;
+      border: 0.2vw solid white;
+      padding: 1vw;
+      border-radius: 2vw;
+    }
+
+    .switch-container-lighting {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 1vw solid rgba(255, 255, 255, 0.1);
+      padding: 2vw;
+      flex-wrap: wrap;
+      border-radius: 2.2vw;
+      background-color: invisible;
+      box-sizing: border-box;
+      height: 61vw;
+      width: 91vw;
+      background-size: cover;
+    }
+
+    .switch-container {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border: 0.2vw solid white;
+      padding: 2vw;
+      flex-wrap: wrap;
+      border-radius: 2vw;
+      background-color: transparent;
+      box-sizing: border-box;
+      height: 60vw;
+      width: 90vw;
+      background-size: cover;
+      max-height: 80vh;
+      max-width: calc(80vh * 9 / 6);
+    }
+
+    .switch-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 8vw;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      z-index: -1;
+      border-radius: 2vw 2vw 0 0;
+    }
+
+    .switch {
+      width: 10vw;
+      height: 10vw;
+      border-radius: 50%;
+      background-color: black;
+      margin: 1vw;
+      box-shadow: 0 0 1vw rgba(255, 255, 255, 0.5);
+    }
+
+    .switch.dark {
+      background-color: white;
+      box-shadow: 0 0 3vw rgba(255, 255, 255, 1);
+    }
+
+    #⬅️ {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 27%;
+      left: 10%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #⬇️ {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 27%;
+      left: 24%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #➡️ {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 38%;
+      left: 36%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #LP {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 28%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #MP {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 17%;
+      left: 62%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #HP {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 17%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #L1 {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 17%;
+      left: 88%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #LK {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 48%;
+      left: 49%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #MK {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 37%;
+      left: 62%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #HK {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 37%;
+      left: 75%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #L2 {
+      position: absolute;
+      width: 10vw;
+      height: 10vw;
+      border: none;
+      top: 37%;
+      left: 88%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    #⬆️ {
+      position: absolute;
+      width: 12vw;
+      height: 12vw;
+      border: none;
+      top: 74%;
+      left: 44%;
+      transform: translate(-50%, -50%);
+      max-height: 14vh;
+      max-width: 14vh;
+    }
+
+    .latest-switches-container {
+      position: absolute;
+      font-size: 2.4vw;
+      font-family: Cairo, sans-serif;
+      font-weight: bold;
+      top: 1%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: white;
+    }
+
+    .text {
+      color: transparent;
+      font-size: 0vw;
+      font-family: Cairo, sans-serif;
+    }
+
+    .touchbox-version {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: -2vh;
+      right: 13vw;
+      transform: translate(50%, 50%);
+      font-size: 1.5vw;
+      font-family: Cairo, sans-serif;
+      color: black;
+      background-color: white;
+      font-weight: bold;
+      padding: 0.3vw;
+      border-radius: 1.3vw;
+    }
+  </style>
 </head>
-<body>
-  
-    <!-- New container for the switches -->
-    
-  <div class="switch-container">
-          <div class="touchbox-version">TouchBox 1.0 by XPISigmaArt (Twitter)</div>
-       <div class="switch" id="⬅️"></div>
-      <div class="switch" id="⬇️"></div>
-      <div class="switch" id="➡️"></div>
-      <div class="switch" id="LP"></div>
-      <div class="switch" id="MP"></div>
-      <div class="switch" id="HP"></div>
-      <div class="switch" id="L1"></div>
-      <div class="switch" id="LK"></div>
-      <div class="switch" id="MK"></div>
-      <div class="switch" id="HK"></div>
-      <div class="switch" id="L2"></div>
-      <div class="switch" id="⬆️"></div>
-      <div class="text" id="touchDisplay"></div>
- <div class="menu" onclick="toggleMenu()">    
-    <div class="menu-trigger">
-    <div class="menu-icon"></div>
-    </div>
-    <div class="menu-items" onclick="event.stopPropagation()">
-      <div class="menu-item" onclick="openFileInput()">Upload Background</div>   
-      <input type="file" id="fileInput" style="display: none" accept="image/*">
-      <div class="menu-item" onclick="toggleButtonColor()">Button Color</div>
-      <input type="color" id="colorPicker" style="display: none">
-      <div class="menu-item" onclick="toggleVibration()">Vibration (<span id="vibration-status">On</span>)</div>
-      <div class="menu-item" id="fullscreenMenuItem">Full Screen</div>
-    </div>
-  </div> 
-    <div class="latest-switches-container" id="latestSwitchesContainer"></div>
-      
 
-      
-      <audio id="switchSound" preload="auto">
-  <source src="https://github.com/XPISigma/TouchBox/raw/main/buttonsound.mp3" type="audio/wav">
-</audio>
-      
-</div>
-<script src="script.js"></script>
+<body>
+  <audio id="switchSound" src="https://github.com/XPISigma/TouchBox/raw/main/buttonsound.mp3"></audio>
+  <div class="switch-container">
+    <div class="touchbox-version">TouchBox 1.0 by XPISigmaArt (Twitter)</div>
+    <div class="switch" id="⬅️"></div>
+    <div class="switch" id="⬇️"></div>
+    <div class="switch" id="➡️"></div>
+    <div class="switch" id="LP"></div>
+    <div class="switch" id="MP"></div>
+    <div class="switch" id="HP"></div>
+    <div class="switch" id="L1"></div>
+    <div class="switch" id="LK"></div>
+    <div class="switch" id="MK"></div>
+    <div class="switch" id="HK"></div>
+    <div class="switch" id="L2"></div>
+    <div class="switch" id="⬆️"></div>
+    <div class="text" id="touchDisplay"></div>
+    <div class="menu" onclick="toggleMenu()">
+      <div class="menu-trigger">
+        <div class="menu-icon"></div>
+      </div>
+      <div class="menu-items" onclick="event.stopPropagation()">
+        <div class="menu-item" onclick="openFileInput()">Upload Background</div>
+        <input type="file" id="fileInput" style="display: none" accept="image/*">
+        <div class="menu-item" onclick="toggleButtonColor()">Button Color (wip)</div>
+        <input type="color" id="colorPicker" style="display: none">
+        <div class="menu-item" onclick="toggleVibration()">Vibration (wip) (<span id="vibration-status">On</span>)</div>
+        <div class="menu-item" id="fullscreenMenuItem">Full Screen</div>
+      </div>
+    </div>
+    <div class="latest-switches-container" id="latestSwitchesContainer"></div>
+
+  </div>
+  <script>
+    // Get the element where we'll display the touch count
+    const touchDisplay = document.getElementById("touchDisplay");
+    // Get all the switches
+    const switches = document.querySelectorAll(".switch");
+    // New array to store the latest switch presses
+    const latestSwitchPresses = [];
+    // Function to update the display of latest switch presses
+    function updateLatestSwitchesDisplay() {
+      const latestSwitchesContainer = document.getElementById(
+        "latestSwitchesContainer"
+      );
+      latestSwitchesContainer.innerHTML = latestSwitchPresses.join("   ");
+    }
+    // Audio element for the switch sound
+    const switchSound = document.getElementById("switchSound");
+    // Set the source URL for the switch sound
+    switchSound.src =
+      "https://github.com/XPISigma/TouchBox/raw/main/buttonsound.mp3";
+    // Function to add the switch ID to the latestSwitchPresses array
+    function addSwitchPressToLatest(switchId) {
+      // Create a new audio element for the switch sound
+      const newSwitchSound = new Audio(switchSound.src);
+      // Play the new switch sound
+      newSwitchSound.play();
+      // Check if vibration is turned on
+      if (vibrationOn) {
+        // Check if the browser supports the Vibration API
+        if ("vibrate" in navigator) {
+          // Vibrate for 200ms
+          navigator.vibrate(150);
+        }
+      }
+      // Add the switchId to the array of latest switch presses
+      latestSwitchPresses.push(switchId);
+      // Remove the oldest switch press if the array exceeds 20 elements
+      if (latestSwitchPresses.length > 20) {
+        latestSwitchPresses.shift();
+      }
+      // Update the display for the latest switch presses
+      updateLatestSwitchesDisplay();
+    }
+    // Function to update the touch count display and darken the switches
+    function updateTouchCount(event) {
+      const touchCount = event.touches.length;
+      touchDisplay.textContent = touchCount;
+      // Check if any switch is being touched and not darkened
+      if (touchCount > 0) {
+        switches.forEach((switchElement) => {
+          const switchRect = switchElement.getBoundingClientRect();
+          let touchedAndNotDarkened = false;
+          // Check if any touch is within the boundaries of the switch and not darkened
+          for (const touch of event.touches) {
+            if (
+              touch.clientX >= switchRect.left &&
+              touch.clientX <= switchRect.right &&
+              touch.clientY >= switchRect.top &&
+              touch.clientY <= switchRect.bottom
+            ) {
+              touchedAndNotDarkened = true;
+              break;
+            }
+          }
+          if (touchedAndNotDarkened) {
+            if (!switchElement.classList.contains("dark")) {
+              switchElement.classList.add("dark");
+              addSwitchPressToLatest(switchElement.id);
+            }
+          } else {
+            switchElement.classList.remove("dark");
+          }
+        });
+      } else {
+        // If there are no touches, remove the 'dark' class from all switches
+        switches.forEach((switchElement) => {
+          switchElement.classList.remove("dark");
+        });
+      }
+      // Call requestAnimationFrame to run the updateTouchCount function every frame
+      requestAnimationFrame(updateTouchCount);
+    }
+    // Function to disable pinch zooming
+    function disablePinchZoom() {
+      document.addEventListener(
+        "touchmove",
+        function(event) {
+          if (event.touches.length > 1) {
+            event.preventDefault();
+          }
+        }, {
+          passive: false
+        }
+      );
+    }
+    // Event listeners to detect touch events
+    document.addEventListener("touchstart", updateTouchCount);
+    document.addEventListener("touchmove", updateTouchCount);
+    document.addEventListener("touchend", updateTouchCount);
+    // Call the function to disable pinch zooming
+    disablePinchZoom();
+    document.addEventListener("click", function(event) {
+      if (event.button === 0) {
+        // 0 represents the left mouse button
+        event.preventDefault();
+      }
+    });
+    document.addEventListener("contextmenu", function(event) {
+      event.preventDefault();
+    });
+    requestAnimationFrame(updateTouchCount);
+    let vibrationOn = true;
+
+    function toggleVibration() {
+      const vibrationStatus = document.getElementById("vibration-status");
+      vibrationOn = !vibrationOn;
+      vibrationStatus.textContent = vibrationOn ? "On" : "Off";
+      if (vibrationOn) {
+        // Check if the browser supports the Vibration API
+        if ("vibrate" in navigator) {
+          // Vibrate for 200ms
+          navigator.vibrate(200);
+        } else {
+          console.log("Vibration is not supported in this browser.");
+        }
+      }
+    }
+
+    function toggleMenu() {
+      const menuItems = document.querySelector(".menu-items");
+      menuItems.style.display =
+        menuItems.style.display === "none" ? "block" : "none";
+    }
+
+    function openFileInput() {
+      const fileInput = document.getElementById("fileInput");
+      fileInput.click();
+    }
+    document
+      .getElementById("fileInput")
+      .addEventListener("change", handleFileUpload);
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageSrc = e.target.result;
+          applyBackgroundImage(imageSrc);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+    // Function to apply background image
+    function applyBackgroundImage(imageSrc) {
+      const switchContainer = document.querySelector(".switch-container");
+      switchContainer.style.backgroundImage = `url('${imageSrc}')`;
+      // Save the imageSrc to Local Storage
+      localStorage.setItem("backgroundImageSrc", imageSrc);
+      console.log("Background image uploaded");
+    }
+    // Function to check if background image exists in Local Storage and apply it
+    function loadBackgroundImageFromCache() {
+      const imageSrc = localStorage.getItem("backgroundImageSrc");
+      if (imageSrc) {
+        applyBackgroundImage(imageSrc);
+      }
+    }
+    // Call this function on page load to load background image from cache (if it exists)
+    loadBackgroundImageFromCache();
+    // Function to handle the color picker change event
+    function handleColorPickerChange(event) {
+      const selectedColor = event.target.value;
+      const switches = document.querySelectorAll(".switch");
+      // Update the color of all switches
+      switches.forEach((switchElement) => {
+        switchElement.style.backgroundColor = selectedColor;
+      });
+      localStorage.setItem("switchColor", selectedColor);
+    }
+    // Function to toggle the color picker for button press color
+    function toggleButtonColor() {
+      const colorPicker = document.getElementById("colorPicker");
+      colorPicker.click();
+    }
+    // Event listener for color picker change event
+    document
+      .getElementById("colorPicker")
+      .addEventListener("input", handleColorPickerChange);
+    let buttonPressColor = "white"; // Default color, you can change this to your desired default color
+    // Call the function to disable pinch zooming
+    disablePinchZoom();
+    const menuItems = document.querySelector(".menu-items");
+    const menuIcon = document.querySelector(".menu-icon");
+    // Function to toggle the menu display
+    function toggleMenu() {
+      menuItems.style.display =
+        menuItems.style.display === "none" ? "block" : "none";
+    }
+    // Event listener to detect clicks on the document
+    document.addEventListener("click", function(event) {
+      if (!menuItems.contains(event.target) && !menuIcon.contains(event.target)) {
+        // Clicked outside the menu and menu icon, so collapse the menu
+        menuItems.style.display = "none";
+      }
+    });
+    // Event listener to detect clicks on the menu icon
+    menuIcon.addEventListener("click", function(event) {
+      event.stopPropagation(); // Prevent the click event from propagating to the document
+      toggleMenu();
+    });
+// Function to toggle full-screen mode
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    // If not in full-screen mode, enter full-screen
+    document.documentElement.requestFullscreen();
+  } else {
+    // If in full-screen mode, exit full-screen
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      /* Firefox */
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      /* Chrome, Safari and Opera */
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      /* IE/Edge */
+      document.msExitFullscreen();
+    }
+  }
+}
+
+// Event listener to detect clicks on the full-screen menu item
+document.getElementById("fullscreenMenuItem").addEventListener("click", toggleFullScreen);
+
+// Call the function to disable pinch zooming
+disablePinchZoom();
+
+// Function to request fullscreen
+function requestFullscreen() {
+  const element = document.documentElement;
+
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    /* Firefox */
+    element.mozRequestFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    /* Chrome, Safari & Opera */
+    element.webkitRequestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    /* IE/Edge */
+    element.msRequestFullscreen();
+  }
+}
+
+// Call the function to request fullscreen when the page loads
+requestFullscreen();
+
+  </script>
 </body>
+
 </html>
