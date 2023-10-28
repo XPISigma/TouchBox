@@ -1,3 +1,8 @@
+if ("serviceWorker" in navigator) {
+  // register service worker
+  navigator.serviceWorker.register("service-worker.js");
+}
+
 // Get the element where we'll display the touch count
 const touchDisplay = document.getElementById("touchDisplay");
 
